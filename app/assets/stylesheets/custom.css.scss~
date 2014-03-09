@@ -1,21 +1,11 @@
 @import "bootstrap";
-
-
-/* mixins, variables, etc. */
-
+/* universal */
 $grayMediumLight: #eaeaea;
-
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-
-
-
-/* universal */
-
 html {
   overflow-y: scroll;
 }
@@ -39,7 +29,6 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
-
 
 /* typography */
 
@@ -67,9 +56,6 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-
-
-
 /* header */
 
 #logo {
@@ -88,8 +74,6 @@ p {
   color: #fff;
   text-decoration: none;
 }
-
-
 /* footer */
 
 footer {
@@ -120,8 +104,6 @@ footer ul li {
   float: left;
   margin-left: 10px;
 }
-
-
 /* miscellaneous */
 
 .debug_dump {
@@ -131,8 +113,6 @@ footer ul li {
   margin-top: 45px;
   @include box_sizing;
 }
-
-
 /* sidebar */
 
 aside {
@@ -175,7 +155,6 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
-
 #error_explanation {
   color: #f00;
   ul {
@@ -188,9 +167,45 @@ input {
   @extend .control-group;
   @extend .error;
 }
+/* Users index */
 
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+/* microposts */
 
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
 
-
-
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
 
