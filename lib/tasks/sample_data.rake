@@ -19,7 +19,7 @@ admin = User.create!(name: "Example User",
                    password: password,
                    password_confirmation: password)
 users = User.all(limit: 6)
-    50.times do
+   50.times do
       content = Faker::Lorem.sentence(5)
       users.each { |user| user.microposts.create!(content: content) }
 end
