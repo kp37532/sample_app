@@ -1,25 +1,33 @@
 class UsersController < ApplicationController
-before_action :signed_in_user, only: [:index, :edit, :update]
+before_action :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
 before_action :correct_user,   only: [:edit, :update]
 before_action :admin_user,     only: :destroy
   def new
   end
+
 def index
 # @users = User.all
 @users = User.paginate(page: params[:page])
   end
+
 def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."
     redirect_to users_url
   end
+
+
   def show
     @user = User.find(params[:id])
 @microposts = @user.microposts.paginate(page: params[:page])
   end
+
+
 def new
     @user = User.new
   end
+
+
 def edit
   end
 
@@ -48,6 +56,25 @@ flash[:success] = "Profile updated"
       render 'edit'
     end
   end
+
+
+def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+
+
+
 
   private
 
